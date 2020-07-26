@@ -11,5 +11,10 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage('Run') {
+            steps{
+                sh 'java -cp target/datacentric-1.0-SNAPSHOT.jar HelloWorld'
+            }
+        }
     }
 }
