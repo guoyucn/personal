@@ -9,11 +9,12 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
+                sh 'docker build -t datacentric .'
             }
         }
         stage('Run') {
             steps{
-                sh 'java -cp target/datacentric-1.0-SNAPSHOT.jar HelloWorld'
+                sh 'docker run datacentric'
             }
         }
     }
